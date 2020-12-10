@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.sass';
 
-import LOGO from './assets/logo/logo.png';
-import { Input, Search as SearchIcon } from './components';
+import { Logo, Input, Search as SearchIcon } from './components';
 
 const App = () => (
   <div className="container">
     <header className="main-header">
-      <img src={LOGO} alt="" className="logo" />
+      <Logo />
+
       <div className="person-details">
         <div className="person-info">
           <span className="bold">Guilherme Cavichioli</span>
