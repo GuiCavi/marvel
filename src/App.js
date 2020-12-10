@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.sass';
 
-import { Input, Search as SearchIcon, Header } from './components';
+import {
+  Input, Search as SearchIcon, Header, FlatList, CharactersListItem,
+} from './components';
 
 const App = () => (
   <div className="container">
@@ -15,32 +17,20 @@ const App = () => (
       </div>
 
       <section>
-        <ul className="flat-list" id="characters-list">
-          <header>
-            <span className="caption">Personagem</span>
-            <span className="caption series">Séries</span>
-            <span className="caption events">Eventos</span>
-          </header>
-
-          <li className="characters-list-item">
-            <div className="list character">
-              <img src="https://via.placeholder.com/150" alt="" />
-              <span className="bold">Abner Jenkins</span>
-            </div>
-
-            <div className="list series">
-              <div>Iron man: Armor Wars</div>
-              <div>Iron man: Armor Wars</div>
-              <div>Iron man: Armor Wars</div>
-            </div>
-
-            <div className="list events">
-              <span>AvX</span>
-              <span>AvX</span>
-              <span>AvX</span>
-            </div>
-          </li>
-        </ul>
+        <FlatList
+          id="characters-list"
+          listHeader={['Personagem', 'Séries', 'Eventos']}
+          data={[
+            {
+              id: 1,
+              image: 'https://via.placeholder.com/150',
+              name: 'Abner Jenkins',
+              series: ['Iron Man: Armor Wars', 'Iron Man: Armor Wars', 'Iron Man: Armor Wars'],
+              events: ['AvX', 'AvX', 'AvX'],
+            },
+          ]}
+          renderItem={(item) => <CharactersListItem item={item} />}
+        />
       </section>
     </main>
 

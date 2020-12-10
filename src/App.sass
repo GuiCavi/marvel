@@ -41,9 +41,6 @@ body
     align-self: initial
     align-items: flex-start
 
-.flat-list
-  list-style-type: none
-
 #characters-list
   display: flex
   flex-direction: column
@@ -53,30 +50,3 @@ body
     display: flex
     > span
       flex: 1
-
-.characters-list-item
-  flex: 1
-  background-color: $characters-list-item-bgc
-  border-radius: 4px
-  padding: map-get($spacing, "sm") map-get($spacing, "m")
-  display: flex
-  align-items: center
-  justify-content: space-between
-  box-shadow: 0 0 5px $shadow
-  margin-bottom: map-get($spacing, "s")
-
-  .character
-    display: flex
-    gap: map-get($spacing, "l")
-    align-items: center
-    > img
-      width: 48px
-      height: 48px
-      border-radius: 4px
-
-  > .list
-    flex: 1
-
-@media screen and ( max-width: 768px )
-  .series, .events
-    display: none
