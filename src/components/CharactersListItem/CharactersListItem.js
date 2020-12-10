@@ -12,13 +12,13 @@ const CharactersListItem = ({ item }) => (
 
     <div className={`${styles.list} ${styles.series}`}>
       {
-          item.series.map((serie) => <div>{serie}</div>)
+          item.series.map((serie) => <div key={serie}>{serie}</div>)
         }
     </div>
 
     <div className={`${styles.list} ${styles.events}`}>
       {
-          item.events.map((event) => <div>{event}</div>)
+          item.events.map((event) => <div key={event}>{event}</div>)
         }
     </div>
   </li>

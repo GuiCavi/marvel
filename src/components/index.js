@@ -4,3 +4,4 @@ export * from './Logo';
 export * from './Header';
 export * from './FlatList';
 export * from './CharactersListItem';
+export * from './Pagination';

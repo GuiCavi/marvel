@@ -1,0 +1,26 @@
+@import "../../theme/_theme"
+
+.pagination
+  display: flex
+  list-style-type: none
+  gap: map-get($spacing, "s")
+  li
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 8px 16px
+    border: 1px solid $darkSnow
+    background-color: $snow
+    border-radius: 4px
+    &.controls
+      padding: 0
+      background-color: #fff
+      border-color: transparent
+      width: 20px
+    &.active
+      background-color: $darkBlue
+      border-color: $darkBlue
+      > span
+        color: #fff
+    > span
+      @extend .pagination-number
