@@ -20,37 +20,6 @@ body
     align-items: flex-start
     padding: map-get($spacing, "xl") map-get($spacing, "l")
 
-.main-header
-  background-color: $header-bgc
-  padding: map-get($spacing, "m") map-get($spacing, "l")
-  display: flex
-  justify-content: space-between
-  align-items: center
-
-  > .logo
-    width: 96px
-    height: 24px
-
-  .person-details
-    display: flex
-    align-items: center
-    gap: map-get($spacing, "l")
-
-  .person-info
-    font-size: 12px
-    @media screen and ( min-width: 768px )
-      display: flex
-      gap: map-get($spacing, "s")
-    span
-      display: block
-      text-align: right
-
-  .avatar
-    font-weight: bold
-    background-color: $snow
-    padding: map-get($spacing, "s")
-    border-radius: 4px
-
 .search-box
   display: flex
   flex-direction: column

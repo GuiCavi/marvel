@@ -1,24 +1,11 @@
 import React from 'react';
 import './App.sass';
 
-import { Logo, Input, Search as SearchIcon } from './components';
+import { Input, Search as SearchIcon, Header } from './components';
 
 const App = () => (
   <div className="container">
-    <header className="main-header">
-      <Logo />
-
-      <div className="person-details">
-        <div className="person-info">
-          <span className="bold">Guilherme Cavichioli</span>
-          <span>Teste de Front-end</span>
-        </div>
-
-        <div className="avatar">
-          <span className="bold">CB</span>
-        </div>
-      </div>
-    </header>
+    <Header user={{ name: 'Guilherme Cavichioli', role: 'Teste de Front-end' }} />
 
     <main className="main-content">
       <h1 className="title">Busca de personagens</h1>
