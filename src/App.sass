@@ -1,5 +1,6 @@
 @import "./theme/_colors"
 @import "./theme/_spacing"
+@import "./theme/_text"
 
 body
   color: $darkSmoke
@@ -9,6 +10,17 @@ body
 
 .container
   background-color: $darkSnow
+
+.main-content
+  padding: map-get($spacing, "l") map-get($spacing, "l")
+  display: flex
+  flex-direction: column
+  align-items: center
+  @media screen and ( min-width: 768px )
+    width: 1200px
+    margin: 0 auto
+    align-items: flex-start
+    padding: map-get($spacing, "xl") map-get($spacing, "l")
 
 .main-header
   background-color: $header-bgc
@@ -40,3 +52,28 @@ body
     background-color: $snow
     padding: map-get($spacing, "s")
     border-radius: 4px
+
+.search-box
+  display: flex
+  flex-direction: column
+  align-items: center
+  align-self: stretch
+  @media screen and ( min-width: 768px )
+    width: 295px
+    align-self: initial
+    align-items: flex-start
+
+.input-wrapper
+  align-self: stretch
+  display: flex
+  align-items: center
+  background-color: #fff
+  border: 1px solid $darkSnow
+  border-radius: 4px
+  padding: map-get($spacing, "s") map-get($spacing, "m")
+
+.input
+  flex: 1
+  border: 0
+  font-style: italic
+  padding-right: map-get($spacing, "s")

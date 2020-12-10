@@ -2,6 +2,7 @@ import React from 'react';
 import './App.sass';
 
 import LOGO from './assets/logo/logo.png';
+import { Search as SearchIcon } from './components';
 
 const App = () => (
   <div className="container">
@@ -19,22 +20,30 @@ const App = () => (
       </div>
     </header>
 
-    <h1>Busca de personagens</h1>
+    <main className="main-content">
+      <h1 className="title">Busca de personagens</h1>
 
-    <div>
-      <label htmlFor="search">
-        Nome do personagem
-        <input type="text" id="search" />
-      </label>
-    </div>
+      <div className="search-box">
+        <label htmlFor="search" className="input-label">
+          Nome do personagem
+        </label>
 
-    <main>
-      <ul>
-        <li>
-          <img src="" alt="" />
-          <span>Abner Jenkins</span>
-        </li>
-      </ul>
+        <div className="input-wrapper">
+          <input type="text" id="search" className="input" placeholder="Search" />
+
+          <SearchIcon className="search-icon" />
+        </div>
+
+      </div>
+
+      <section>
+        <ul>
+          <li>
+            <img src="" alt="" />
+            <span>Abner Jenkins</span>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
