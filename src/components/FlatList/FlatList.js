@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import './FlatList.module.sass';
+import styles from './FlatList.module.sass';
 
 const FlatList = ({
-  listHeader, data, renderItem, ...props
+  listHeader, data, renderItem, hideHeaders, ...props
 }) => (
-  <ul className="flat-list" {...props}>
+  <ul className={styles['flat-list']} {...props}>
     <header>
       {
-        listHeader.map((header) => <span className="caption">{header}</span>)
+        listHeader.map((header, index) => <span className={`caption ${hideHeaders.includes(index) ? 'hidden' : ''}`}>{header}</span>)
       }
     </header>
 
@@ -20,7 +20,8 @@ const FlatList = ({
 );
 
 FlatList.propTypes = {
-  listHeader: PropTypes.array.isRequired,
+  listHeader: PropTypes.arrayOf([PropTypes.string, PropTypes.element]).isRequired,
+  hideHeaders: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   renderItem: PropTypes.func.isRequired,
 };

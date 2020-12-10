@@ -44,6 +44,10 @@ body
 #characters-list
   display: flex
   flex-direction: column
+  @media screen and ( max-width: 768px )
+    .hidden
+      display: none
+
   > header
     padding: 0 map-get($spacing, "m")
     margin-bottom: map-get($spacing, "s")

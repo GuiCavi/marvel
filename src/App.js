@@ -20,6 +20,7 @@ const App = () => (
         <FlatList
           id="characters-list"
           listHeader={['Personagem', 'Séries', 'Eventos']}
+          hideHeaders={[1, 2]}
           data={[
             {
               id: 1,
