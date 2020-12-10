@@ -8,24 +8,75 @@ body
 
 .container
   background-color: $darkSnow
+  height: 100vh
+  display: flex
+  flex-direction: column
 
 .main-content
+  overflow-y: auto
+  flex: 1
   padding: map-get($spacing, "l") map-get($spacing, "l")
   display: flex
   flex-direction: column
-  align-items: center
+  > h1
+    text-align: center
+
   @media screen and ( min-width: 768px )
+    max-width: 100%
     width: 1200px
     margin: 0 auto
-    align-items: flex-start
+    align-items: initial
     padding: map-get($spacing, "xl") map-get($spacing, "l")
+    > h1
+      text-align: left
 
 .search-box
   display: flex
   flex-direction: column
   align-items: center
   align-self: stretch
+  margin-bottom: map-get($spacing, "lm")
   @media screen and ( min-width: 768px )
     width: 295px
     align-self: initial
     align-items: flex-start
+
+.flat-list
+  list-style-type: none
+
+#characters-list
+  display: flex
+  flex-direction: column
+  > header
+    padding: 0 map-get($spacing, "m")
+    margin-bottom: map-get($spacing, "s")
+    display: flex
+    > span
+      flex: 1
+
+.characters-list-item
+  flex: 1
+  background-color: $characters-list-item-bgc
+  border-radius: 4px
+  padding: map-get($spacing, "sm") map-get($spacing, "m")
+  display: flex
+  align-items: center
+  justify-content: space-between
+  box-shadow: 0 0 5px $shadow
+  margin-bottom: map-get($spacing, "s")
+
+  .character
+    display: flex
+    gap: map-get($spacing, "l")
+    align-items: center
+    > img
+      width: 48px
+      height: 48px
+      border-radius: 4px
+
+  > .list
+    flex: 1
+
+@media screen and ( max-width: 768px )
+  .series, .events
+    display: none

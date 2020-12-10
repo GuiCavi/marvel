@@ -15,10 +15,30 @@ const App = () => (
       </div>
 
       <section>
-        <ul>
-          <li>
-            <img src="" alt="" />
-            <span>Abner Jenkins</span>
+        <ul className="flat-list" id="characters-list">
+          <header>
+            <span className="caption">Personagem</span>
+            <span className="caption series">Séries</span>
+            <span className="caption events">Eventos</span>
+          </header>
+
+          <li className="characters-list-item">
+            <div className="list character">
+              <img src="https://via.placeholder.com/150" alt="" />
+              <span className="bold">Abner Jenkins</span>
+            </div>
+
+            <div className="list series">
+              <div>Iron man: Armor Wars</div>
+              <div>Iron man: Armor Wars</div>
+              <div>Iron man: Armor Wars</div>
+            </div>
+
+            <div className="list events">
+              <span>AvX</span>
+              <span>AvX</span>
+              <span>AvX</span>
+            </div>
           </li>
         </ul>
       </section>
@@ -28,8 +48,6 @@ const App = () => (
       <ul>
         <li>1</li>
         <li>2</li>
-        <li>3</li>
-        <li>4</li>
       </ul>
     </footer>
   </div>
