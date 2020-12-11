@@ -1,70 +1,31 @@
-import React, { useCallback, useState } from 'react';
-import './App.sass';
-
+import React from 'react';
 import {
-  Input, Search as SearchIcon, Header, FlatList, CharactersListItem, Pagination,
-} from './components';
-import { useCharacters } from './contexts/Characters';
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom';
 
-const App = () => {
-  const [activePage, setActivePage] = useState(1);
+import './App.sass';
+import { Header } from './components';
+import { CharactersList, CharactersDetails } from './pages';
 
-  const {
-    isLoading,
-    characters,
-    ITEMS_PER_PAGE,
-    totalCharacters,
-    getPage,
-    searchCharacter,
-    filteredCharacters,
-  } = useCharacters();
+const App = () => (
+  <div className="container">
+    <Header user={{ name: 'Guilherme Cavichioli', role: 'Teste de Front-end' }} />
 
-  const onChangePage = useCallback((page) => {
-    getPage(page - 1);
-    setActivePage(page);
-  }, [getPage]);
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <CharactersList />
+        </Route>
 
-  return (
-    <div className="container">
-      <Header user={{ name: 'Guilherme Cavichioli', role: 'Teste de Front-end' }} />
+        <Route path="/details">
+          <CharactersDetails />
+        </Route>
 
-      <main className="main-content">
-        <h1 className="title">Busca de personagens</h1>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
 
-        <div className="search-box">
-          <Input
-            label="Nome do personagem"
-            icon={<SearchIcon className="search-icon" />}
-            onSubmit={(text) => searchCharacter(text)}
-          />
-        </div>
-
-        <section>
-          <FlatList
-            id="characters-list"
-            isLoading={isLoading}
-            listHeader={['Personagem', 'Séries', 'Eventos']}
-            hideHeaders={[1, 2]}
-            data={
-              filteredCharacters.length > 0
-                ? filteredCharacters
-                : characters[activePage - 1]
-            }
-            renderItem={(item) => <CharactersListItem key={item.id} item={item} />}
-          />
-        </section>
-      </main>
-
-      <footer className="main-footer">
-        <Pagination
-          pages={Math.ceil(totalCharacters / ITEMS_PER_PAGE)}
-          activePage={activePage}
-          showOnly={5}
-          onChangePage={onChangePage}
-        />
-      </footer>
-    </div>
-  );
-};
+  </div>
+);
 
 export default App;
