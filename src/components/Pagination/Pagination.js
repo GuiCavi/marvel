@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React from 'react';
 
 import styles from './Pagination.module.sass';
 import PaginationButton from './PaginationButton';
@@ -7,7 +7,7 @@ import PaginationButton from './PaginationButton';
 const Pagination = ({
   pages, activePage, showOnly, onChangePage,
 }) => {
-  const numbers = useRef(new Array(pages).fill(0).map((_, i) => i + 1)).current;
+  const numbers = new Array(pages).fill(0).map((_, i) => i + 1);
   const startSlice = Math.max(0, activePage - (showOnly / 2));
   const endSlice = activePage + (showOnly / 2);
 
