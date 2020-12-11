@@ -3,6 +3,9 @@ import React from 'react';
 
 import styles from './CharactersListItem.module.sass';
 
+const DISPLAY_N_EVENTS = 3;
+const DISPLAY_N_SERIES = 3;
+
 const CharactersListItem = ({ item }) => (
   <li className={styles['characters-list-item']}>
     <div className={`${styles.list} ${styles.character}`}>
@@ -12,13 +15,13 @@ const CharactersListItem = ({ item }) => (
 
     <div className={`${styles.list} ${styles.series}`}>
       {
-          item.series.map((serie) => <div key={serie}>{serie}</div>)
+          item.series.slice(0, DISPLAY_N_EVENTS).map((serie) => <div key={serie}>{serie}</div>)
         }
     </div>
 
     <div className={`${styles.list} ${styles.events}`}>
       {
-          item.events.map((event) => <div key={event}>{event}</div>)
+          item.events.slice(0, DISPLAY_N_SERIES).map((event) => <div key={event}>{event}</div>)
         }
     </div>
   </li>
