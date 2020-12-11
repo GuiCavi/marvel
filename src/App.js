@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './App.sass';
 
 import {
   Input, Search as SearchIcon, Header, FlatList, CharactersListItem, Pagination,
 } from './components';
+import { useCharacters } from './contexts/Characters';
 
 const App = () => {
   const [activePage, setActivePage] = useState(1);
+
+  const {
+    isLoading, characters, ITEMS_PER_PAGE, totalCharacters, getPage,
+  } = useCharacters();
+
+  const onChangePage = useCallback((page) => {
+    getPage(page - 1);
+    setActivePage(page);
+  }, []);
+
   return (
     <div className="container">
       <Header user={{ name: 'Guilherme Cavichioli', role: 'Teste de Front-end' }} />
@@ -21,28 +32,21 @@ const App = () => {
         <section>
           <FlatList
             id="characters-list"
+            isLoading={isLoading}
             listHeader={['Personagem', 'Séries', 'Eventos']}
             hideHeaders={[1, 2]}
-            data={[
-              {
-                id: 1,
-                image: 'https://via.placeholder.com/150',
-                name: 'Abner Jenkins',
-                series: ['Iron Man: Armor Wars', 'Iron Man: Armor Wars', 'Iron Man: Armor Wars'],
-                events: ['AvX', 'AvX', 'AvX'],
-              },
-            ]}
-            renderItem={(item) => <CharactersListItem item={item} />}
+            data={characters[activePage - 1]}
+            renderItem={(item) => <CharactersListItem key={item.id} item={item} />}
           />
         </section>
       </main>
 
       <footer className="main-footer">
         <Pagination
-          pages={10}
+          pages={Math.ceil(totalCharacters / ITEMS_PER_PAGE)}
           activePage={activePage}
           showOnly={5}
-          onChangePage={(page) => setActivePage(page)}
+          onChangePage={onChangePage}
         />
       </footer>
     </div>

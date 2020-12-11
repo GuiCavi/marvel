@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import App from './App';
+import { CharactersProvider } from './contexts/Characters';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CharactersProvider>
+      <App />
+    </CharactersProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
