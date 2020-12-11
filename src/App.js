@@ -16,7 +16,7 @@ const App = () => {
   const onChangePage = useCallback((page) => {
     getPage(page - 1);
     setActivePage(page);
-  }, []);
+  }, [getPage]);
 
   return (
     <div className="container">

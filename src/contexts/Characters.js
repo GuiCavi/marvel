@@ -16,10 +16,11 @@ const ITEMS_PER_PAGE = 10;
 
 export const CharactersProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState({});
   const [totalCharacters, setTotalCharacters] = useState(ITEMS_PER_PAGE);
 
   async function getPage(page = 0, limit = ITEMS_PER_PAGE) {
+    console.log(page);
     if (characters[page]) {
       return;
     }
