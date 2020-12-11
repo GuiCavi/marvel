@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -12,11 +11,19 @@ const CharactersDetails = () => {
 
   return (
     <>
+      <div style={{
+        position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, backgroundColor: 'black',
+      }}
+      />
       <div className={styles['image-wrapper']}>
         <img src={character.image} alt={character.name} className={styles['character-image']} />
       </div>
       <main className="main-content" id={styles.details}>
-        <Link to="/" className={styles['navigation-button']}>Voltar</Link>
+        <div className={styles['navigation-button']}>
+          <Link to="/">
+            Voltar
+          </Link>
+        </div>
 
         <img src={character.image} alt={character.name} className={styles['character-pfp']} />
         <h1>{character.name}</h1>
@@ -25,35 +32,24 @@ const CharactersDetails = () => {
           <div>
             <h2>Series</h2>
             {
-              character.series.map((serie) => <MidiaItem key={serie}>{serie}</MidiaItem>)
+              character.series.length === 0
+                ? <span>Nenhum registro.</span>
+                : character.series.map((serie) => <span className={styles['midia-item']}>{serie}</span>)
             }
           </div>
 
           <div>
             <h2>Events</h2>
             {
-              character.events.map((event) => <MidiaItem key={event}>{event}</MidiaItem>)
+              character.events.length === 0
+                ? <span>Nenhum registro.</span>
+                : character.events.map((event) => <span className={styles['midia-item']}>{event}</span>)
             }
           </div>
         </div>
       </main>
     </>
   );
-};
-
-const MidiaItem = ({ children }) => (
-  <span className={styles['midia-item']}>{children}</span>
-);
-
-MidiaItem.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-MidiaItem.defaultProps = {
-  children: undefined,
 };
 
 export default CharactersDetails;
