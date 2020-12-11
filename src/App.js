@@ -10,7 +10,13 @@ const App = () => {
   const [activePage, setActivePage] = useState(1);
 
   const {
-    isLoading, characters, ITEMS_PER_PAGE, totalCharacters, getPage,
+    isLoading,
+    characters,
+    ITEMS_PER_PAGE,
+    totalCharacters,
+    getPage,
+    searchCharacter,
+    filteredCharacters,
   } = useCharacters();
 
   const onChangePage = useCallback((page) => {
@@ -26,7 +32,11 @@ const App = () => {
         <h1 className="title">Busca de personagens</h1>
 
         <div className="search-box">
-          <Input icon={<SearchIcon className="search-icon" />} />
+          <Input
+            label="Nome do personagem"
+            icon={<SearchIcon className="search-icon" />}
+            onSubmit={(text) => searchCharacter(text)}
+          />
         </div>
 
         <section>
@@ -35,7 +45,11 @@ const App = () => {
             isLoading={isLoading}
             listHeader={['Personagem', 'Séries', 'Eventos']}
             hideHeaders={[1, 2]}
-            data={characters[activePage - 1]}
+            data={
+              filteredCharacters.length > 0
+                ? filteredCharacters
+                : characters[activePage - 1]
+            }
             renderItem={(item) => <CharactersListItem key={item.id} item={item} />}
           />
         </section>
